@@ -1,1 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Magical Internet Cat Gif Button!</title>
+</head>
+<body>
+    <h1>Click Button, Get Cat!</h1>
+    
+    <button id="cat-button">Magical Cat Button</button>
+    <div id="images">
+    </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        $("#cat-button").on("click", function() {
+            var queryURL - "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzc&tag=cats";
+
+            $.ajax({
+                url: querURL;
+                method: "GET"
+            })
+
+            .then(function(response) {
+
+                var imageUrl = response.image_original_url;
+
+                var catImage = $("<img>");
+
+                catImage.attr("src", imageUrl);
+                catImage.attr("alt", "cat image");
+
+                $("#images").prepend(catImage);
+            });
+        });
+
+    </script>
+
+</body>
+</html>
